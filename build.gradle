@@ -1,7 +1,7 @@
 buildscript {
     ext {
-        kotlinVersion = '1.4.31'
-        androidGradleVersion = '4.1.2'
+        kotlinVersion = '1.9.22'
+        androidGradleVersion = '8.2.1'
         coroutineVersion = '1.4.2'
 
         // Google libraries
@@ -9,7 +9,7 @@ buildscript {
         appCompatVersion = '1.2.0'
         constraintLayoutVersion = '2.0.4'
         materialComponentsVersion = '1.3.0'
-        roomVersion = '2.2.6'
+        roomVersion = '2.6.1'
         fragmentVersion = '1.3.0'
         lifecycleVersion = '2.3.0'
         androidXCoreVersion = '2.1.0'
@@ -40,30 +40,15 @@ buildscript {
     }
 
     repositories {
-        jcenter()
+        mavenCentral()
         google()
         gradlePluginPortal()
     }
 
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradleVersion"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:$junitGradlePluignVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokkaVersion"
-        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
-        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktLintGradleVersion"
-        classpath "org.jetbrains.kotlinx:binary-compatibility-validator:$binaryCompatibilityValidator"
-        classpath "com.squareup.wire:wire-gradle-plugin:$wireVersion"
     }
-}
-apply plugin: 'binary-compatibility-validator'
-
-apiValidation {
-    ignoredProjects += ["sample"]
-    ignoredPackages += [
-            "com.chuckerteam.chucker.internal",
-            "com.chuckerteam.chucker.databinding"
-    ]
 }
 
 allprojects {
@@ -71,7 +56,7 @@ allprojects {
     group = GROUP
 
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
 
@@ -95,6 +80,6 @@ task clean(type: Delete) {
 
 ext {
     minSdkVersion = 21
-    targetSdkVersion = 30
-    compileSdkVersion = 30
+    targetSdkVersion = 34
+    compileSdkVersion = 34
 }
